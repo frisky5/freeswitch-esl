@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d95f0259-0eef-4402-ae90-560f7714de63" name="Default Changelist" comment="" />
+    <list default="true" id="d95f0259-0eef-4402-ae90-560f7714de63" name="Default Changelist" comment="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/processors/RawDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/processors/RawDataProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/queues/SocketRawDataQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/queues/SocketRawDataQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/DataReadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/DataReadHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +43,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
@@ -68,17 +74,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Entry" />
@@ -95,8 +90,18 @@
       <updated>1610097936380</updated>
       <workItem from="1610097937667" duration="18896000" />
       <workItem from="1610352518199" duration="47102000" />
-      <workItem from="1610609209099" duration="210000" />
+      <workItem from="1610609209099" duration="20361000" />
+      <workItem from="1610782561386" duration="656000" />
+      <workItem from="1610790473102" duration="769000" />
     </task>
+    <task id="LOCAL-00001" summary="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead">
+      <created>1610609792831</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610609792831</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,5 +111,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead" />
+    <option name="LAST_COMMIT_MESSAGE" value="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead" />
   </component>
 </project>

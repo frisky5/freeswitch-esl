@@ -6,13 +6,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class SocketRawDataQueue {
 
-    private static LinkedBlockingQueue<String> socketRawDataQueue = null;
+    private static LinkedBlockingQueue<byte[]> socketRawDataQueue = null;
 
     private SocketRawDataQueue() {
 
     }
 
-    public static LinkedBlockingQueue<String> getQueue() {
+    public static LinkedBlockingQueue<byte[]> getQueue() {
         if (socketRawDataQueue == null)
             socketRawDataQueue = new LinkedBlockingQueue<>();
         return socketRawDataQueue;

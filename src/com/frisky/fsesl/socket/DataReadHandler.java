@@ -18,8 +18,8 @@ public class DataReadHandler extends SimpleChannelInboundHandler<ByteBuf> {
     private long avgAddTime;
     private long sum = 0;
     private int numberOfAddedMessages = 0;
-    private LinkedBlockingQueue<String> socketRawDataQueue = SocketRawDataQueue.getQueue();
-    private StringBuilder stringBuilder_1 = new StringBuilder();
+    private LinkedBlockingQueue<byte[]> socketRawDataQueue = SocketRawDataQueue.getQueue();
+    private StringBuilder data = new StringBuilder();
 
     private int contentLength = 0;
     private boolean dataFragmented = false;
@@ -45,7 +45,11 @@ public class DataReadHandler extends SimpleChannelInboundHandler<ByteBuf> {
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf dataBytes) {
         startTime = System.nanoTime();
         numberOfAddedMessages++;
-        socketRawDataQueue.add(dataBytes.toString(CharsetUtil.UTF_8));
+        byte[] temp = new byte[dataBytes.readableBytes()];
+        dataBytes.readBytes(temp);
+        socketRawDataQueue.add(temp);
+        temp = null;
+        //socketRawDataQueue.add(dataBytes.toString(CharsetUtil.UTF_8));
         endTime = System.nanoTime();
         sum += (endTime - startTime);
         avgAddTime = sum / numberOfAddedMessages;
@@ -55,6 +59,5 @@ public class DataReadHandler extends SimpleChannelInboundHandler<ByteBuf> {
             sum = 0;
             numberOfAddedMessages = 0;
         }
-
     }
 }
