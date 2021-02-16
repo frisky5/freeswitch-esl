@@ -39,7 +39,6 @@ public class WritingThread implements Runnable {
             while (!threadControl.getStopWritingThread()) {
                 try {
                     message = socketOutboundMessagesQueue.take();
-                    //System.out.println("writing message: " + message);
                     channel.writeAndFlush(Unpooled.copiedBuffer(message, CharsetUtil.UTF_8));
                 } catch (InterruptedException e) {
                     e.printStackTrace();

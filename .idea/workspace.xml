@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d95f0259-0eef-4402-ae90-560f7714de63" name="Default Changelist" comment="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead">
+    <list default="true" id="d95f0259-0eef-4402-ae90-560f7714de63" name="Default Changelist" comment="garbage collection is working a lot when not processing data directly inside the read meathod">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_logging_log4j_log4j_api_2_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_logging_log4j_log4j_core_2_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_logging_log4j_log4j_slf4j_impl_2_14_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_lang3_3_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/processors/RawDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/processors/RawDataProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/queues/SocketRawDataQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/queues/SocketRawDataQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/freeswitch esl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/freeswitch esl.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/processors/RawDataProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/queues/SocketRawDataQueue.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/DataReadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/DataReadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/SocketThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/SocketThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/WritingThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/frisky/fsesl/socket/WritingThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +39,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1mmTnfd53B0JuGKvuDexrV9eGlU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -54,11 +71,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -69,7 +86,18 @@
     <configuration name="Entry" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Entry" />
       <module name="freeswitch esl" />
-      <option name="VM_PARAMETERS" value="-Xmx100M -Xms30M" />
+      <option name="VM_PARAMETERS" value="-Xmx200M -Xms60M" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,7 +120,9 @@
       <workItem from="1610352518199" duration="47102000" />
       <workItem from="1610609209099" duration="20361000" />
       <workItem from="1610782561386" duration="656000" />
-      <workItem from="1610790473102" duration="769000" />
+      <workItem from="1610790473102" duration="13243000" />
+      <workItem from="1610871204822" duration="7446000" />
+      <workItem from="1612780737168" duration="3503000" />
     </task>
     <task id="LOCAL-00001" summary="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead">
       <created>1610609792831</created>
@@ -101,17 +131,37 @@
       <option name="project" value="LOCAL" />
       <updated>1610609792831</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="garbage collection is working a lot when not processing data directly inside the read meathod">
+      <created>1610802806776</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610802806776</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead" />
-    <option name="LAST_COMMIT_MESSAGE" value="lib can now handle authentication, subscribing to JSON events, and processing socket stream into events or command reply.&#10;Stringbuilder is causing GC to trigger frequently, will try to use String instead" />
+    <MESSAGE value="garbage collection is working a lot when not processing data directly inside the read meathod" />
+    <option name="LAST_COMMIT_MESSAGE" value="garbage collection is working a lot when not processing data directly inside the read meathod" />
   </component>
 </project>

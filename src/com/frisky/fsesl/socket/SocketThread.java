@@ -1,7 +1,6 @@
 package com.frisky.fsesl.socket;
 
 import com.frisky.fsesl.EslConnector;
-import com.frisky.fsesl.processors.RawDataProcessor;
 import com.frisky.fsesl.threadControl.ThreadControl;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -12,8 +11,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SocketThread implements Runnable {
     private ThreadControl threadControl;
@@ -32,14 +29,15 @@ public class SocketThread implements Runnable {
             AtomicBoolean isConnected = new AtomicBoolean(false);
             bootstrap.group(nioEventLoopGroup);
             bootstrap.channel(NioSocketChannel.class);
+
             bootstrap.remoteAddress(new InetSocketAddress(threadControl.getProperty(EslConnector.FS_ESL_IP_ADDRESS), Integer.parseInt(threadControl.getProperty(EslConnector.FS_ESL_PORT))));
             bootstrap.handler(new ChannelInit(threadControl));
             bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+            bootstrap.option(ChannelOption.SO_LINGER, 0);
+
             ChannelFuture channelFuture = bootstrap.connect().sync();
             Thread writingThread = new Thread(new WritingThread(channelFuture.channel(), threadControl));
             writingThread.start();
-            Thread rawDataProcessor = new Thread(new RawDataProcessor(threadControl));
-            rawDataProcessor.start();
             isConnected.set(true);
             channelFuture.channel().closeFuture().sync();
             isConnected.set(false);
